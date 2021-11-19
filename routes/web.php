@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login', function () {
+    return ('login');
+});
+Route::get('/logout', function () {
+    return ('logout');
+});
+Route::get('/productos', function () {
+    return ('listado productos');
+});
+Route::get('/productos/show/{id}', function ($id) {
+    return ('Vista detalle producto ' . $id);
+});
+Route::get('/productos/create', function () {
+    return ('Añadir producto');
+});
+Route::get('/productos/edit/{id}', function ($id) {
+    return ('Modificar producto ' . $id);
+});
