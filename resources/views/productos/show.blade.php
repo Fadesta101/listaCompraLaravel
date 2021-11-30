@@ -2,7 +2,7 @@
 
 @section('content')
 
-Vista detalle producto {{ $id }}
+Vista detalle producto {{ $producto->id }}
 
 <div class="row">
 
@@ -12,9 +12,15 @@ Vista detalle producto {{ $id }}
 
     </div>
     <div class="col-sm-8">
-        <p><b>Nombre:</b> {{ $producto[0] }}</p>
-        <p><b>Categoría:</b> {{ $producto[1] }}</p>
-        <a class="btn btn-warning" href="{{ url('/productos/edit/' . $id ) }}">
+        <p><b>Nombre:</b> {{ $producto->nombre }}</p>
+        <p><b>Categoría:</b> {{ $producto->categoria }}</p>
+        @if($producto->pendiente)
+            <a class="btn btn-danger" href="#">Comprar producto</a>
+        @else
+            <a class="btn btn-primary" href="#">Comprado</a>
+        @endif
+
+        <a class="btn btn-warning" href="{{ url('/productos/edit/' . $producto->id ) }}">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
             Editar Producto</a>
         <a class="btn btn-outline-info" href="{{ action('App\Http\Controllers\ProductoController@getIndex') }}">Volver al listado</a>
