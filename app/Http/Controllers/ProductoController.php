@@ -319,7 +319,7 @@ class ProductoController extends Controller
     }
     public function getEdit($id)
     {
-        return view('productos.edit', array('id' => $id));
+        return view('productos.edit', array('producto' => $this->arrayProductos[$id], 'id' => $id));
     }
 }
 

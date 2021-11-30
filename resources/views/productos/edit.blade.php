@@ -18,7 +18,7 @@
 
                  <div class="form-group">
                     <label for="title">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control">
+                    <input type="text" value="{{$producto[0]}}" name="nombre" id="nombre" class="form-control">
                  </div>
 
                  <div class="form-group">
@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     <label for="title">Categoría</label>
-                   <input type="text" name="categoria" id="categoria" class="form-control">
+                   <input type="text" value="{{$producto[1]}}" name="categoria" id="categoria" class="form-control">
                 </div>
 
                 <div class="form-group">
