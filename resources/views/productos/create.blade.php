@@ -1,8 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
-
-
 
     <div class="row" style="margin-top:40px">
         <div class="offset-md-3 col-md-6">
@@ -12,7 +10,8 @@
               </div>
               <div class="card-body" style="padding:30px">
 
-
+                <form action="" method="POST">
+                    @csrf
                  <div class="form-group">
                     <label for="title">Nombre</label>
                     <input type="text" name="nombre" id="nombre" class="form-control">
@@ -44,6 +43,7 @@
                     </button>
                  </div>
 
+                </form>
                  {{-- TODO: Cerrar formulario --}}
 
               </div>

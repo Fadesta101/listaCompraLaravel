@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -11,7 +11,7 @@
 
               <div class="card-body" style="padding:30px">
 
-                <form action="{{ url('/productos/create') }}" method="POST">
+                <form action="{{ url('/productos/edit/'.$id) }}" method="POST">
                     {{method_field('PUT')}}
 
                     @csrf

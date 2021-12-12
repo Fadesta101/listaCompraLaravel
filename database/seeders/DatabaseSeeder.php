@@ -4,9 +4,56 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Producto;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class DatabaseSeeder extends Seeder
 {
+
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+    self::seedProductos();
+    $this->command->info('Tabla productos inicializada con datos!');
+
+    self::seedUsers();
+    $this->command->info('Tabla usuarios inicializada con datos!');
+    }
+
+    private static function seedProductos()
+    {
+        Producto::truncate();
+        foreach( self::$arrayProductos as $producto ) {
+            $p = new Producto;
+            $p->nombre = $producto[0];
+            $p->categoria = $producto[1];
+            $p->save();
+        }
+
+    }
+
+    private static function seedUsers()
+    {
+        User::truncate();
+        foreach (self::$usuarios as $usuario) {
+            $u = new User;
+            $u->nombre = $usuario[0];
+            $u->apellidos = $usuario[1];
+            $u->email = $usuario[2];
+            $u->password = bcrypt($usuario[3]);
+            $u->save();
+        }
+    }
+
+    private static $usuarios = array(
+        array("Juan Pablo", "Escobar", "escobarpablo@gamil.com", "123456"),
+        array("Pablo", "Tongo", "tongo124@gmail.com", "123456")
+    );
+
     private static $arrayProductos = array(
         array('Aceite','Aceites y grasas'),
         array('Aceite de oliva','Aceites y grasas'),
@@ -303,27 +350,4 @@ class DatabaseSeeder extends Seeder
         array('Suavizante ropa','Limpieza del hogar'),
         array('Toalla de papel','Limpieza del hogar')
         );
-
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
-    {
-    self::seedProductos();
-    $this->command->info('Tabla productos inicializada con datos!');
-    }
-
-    private static function seedProductos()
-    {
-        Producto::truncate();
-        foreach( self::$arrayProductos as $producto ) {
-            $p = new Producto;
-            $p->nombre = $producto[0];
-            $p->categoria = $producto[1];
-            $p->save();
-        }
-
-    }
 }
